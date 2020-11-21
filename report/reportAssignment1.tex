@@ -1,0 +1,178 @@
+\documentclass[10pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[greek,english]{babel}
+\usepackage{alphabeta}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphics}
+\usepackage{listings}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\newcommand{\tu}{\textunderscore}
+\begin{document}
+\thispagestyle{plain}
+\begin{center}
+    \Large
+    \textbf{\emph{ΑΡΧΙΤΕΚΤΟΝΙΚΗ ΠΡΟΗΓΜΕΝΩΝ ΥΠΟΛΟΓΙΣΤΩΝ}}
+        
+    \vspace{0.4cm}
+    \large
+    \textbf{\textbf{Assignment 1}}
+        
+    \vspace{0.4cm}
+    \textit{Συγγραφείς:}\textbf{Σακελλαρίου Βασίλης , Φίλης Χάρης}
+       
+    \vspace{0.9cm}
+\end{center}
+\tableofcontents
+\chapter{Εργαστήριο 1}
+\section{Ανάλυση του αρχείου : starter\tu se.py}
+Απο το αρχειο \textbf{starter\tu se.py} αναγνωρίζουμε τα εξής στοιχεία:
+\begin{itemize}
+\item Ορίζεται το dictionary \textbf{cpu\tu types} που αντιστοιχίζει το --cpu σε έναν από τους παρακάτω τύπους(δομή δεδομένων):
+\begin{enumerate}
+\item AtomicSimpleCPU : "atomic" -> Η προεπίλογή τύπου επεξεργαστή που δεν έχει caches.
+\item MinorCPU : "minor" -> Στην περίπτωση αυτή χρησιμοποιείται η βιβλιοθήκη \textit{devices.py} που ορίζονται οι δομικές μονάδες του minor(\textit{δηλ. L1 caches(dcache,icache), L2 cache}) με όλα τα  χαρακατηριστικά τους.
+\item ΗP1 : "hpi" -> Κατα αντιστοιχία με το παραπάνω μέσω της βιβλιοθήκης \textit{HPI.py} ορίζονται οι απαραίτητς μνήμες cache για hpi επεξεργαστή ή cluster.
+\end{enumerate}
+\item Ορίζεται στην κλάση \textit{SimpleSeSystem} Clock speed: \textbf{1GHz} στο πεδίο \begin{lstlisting}
+self.clk_domain = SrcClockDomain(clock="1GHz",
+voltage_domain=self.voltage_domain)
+\end{lstlisting}
+\item Στην main function οριζονται από τον parser τα εξής:
+\begin{itemize}
+\item Ο τύπος του επεξεργαστή που στο δικό μας παράδειγμα επιλέγεται ο MinorCPU.
+\item Caches: με την επιλογή minor cpu έχουμε και L1 cache και L2 cache
+\item Μνήμη: με την εντολή που τρέχουμε δεν δίνουμε την παράμετρο--mem-size άρα παίρνει την default τιμή που είναι 2Gb ούτε και το --mem-type οπότε by default πάει στην τεχνολογία \textbf{DDR3\tu1600\tu8x8}.
+\item Components voltage: default->3.3V.
+\item CPU claster voltage: default->1.2V.
+\item CPU freq: default->4Ghz.
+\item Number of cores: default->1.
+\end{itemize}
+\end{itemize}
+
+\section{2}
+
+
+2
+a)\newline
+Ανοίγοντας το config.ini
+\newline 
+[system.clk\tu domain]
+\newline
+clock = 1000 (επαληθεύεται)
+\newline
+[system.cpu\tu cluster.cpus.dcache] -> size = 32768 (που επαληθεύεται απο το αρχείο devices.py οπου η data cache l1 του minor είναι 32KB)
+\newline
+[system.cpu\tu cluster.cpus.icache] -> size = 49152 (που επαληθεύεται απο το αρχείο devices.py οπου η instruction cache l1 του minor είναι 48KB)
+\newline
+[system.cpu\tu cluster.l2] -> size = 1048576 (που επαληθεύεται απο το αρχείο devices.py οπου η cache l2 του minor είναι 1ΜΒ)
+\newline
+[system.voltage\tu domain] voltage=3.3(που επαληθεύεται)
+\newline
+[system.cpu\tu cluster.voltage\tu domain] -> voltage = 1.2(που επαληθεύεται )
+\newline
+[system] -> $mem\tu ranges=0:2147483648$  (που επαληθεύει τα 2GB by default ram)
+\newline
+2 b)\newline
+Aνοίγοντας το αρχείο stats.txt
+Commited intructions 5028 από:\newline
+line14 :system.cpu\tu cluster.cpus.committedInsts   5028 // Number of instructions committed
+%todo a question asked in 2b
+\newline
+2c)Το συνολικό πλήθος των προσβάσεων στην L2 cache ειναι 479, από τα οποία 332 είναι απο miss της icache και 147 απο miss της dcache.
+\newline
+system.cpu\tu cluster.l2.demand\tu accesses::total          479                       // number of demand (read+write) accesses
+\newline
+system.cpu\tu cluster.l2.overall\tu accesses::.cpu\tu cluster.cpus.inst          332                       // number of overall (read+write) accesses
+\newline
+system.cpu\tu cluster.l2.overall\tu accesses::.cpu\tu cluster.cpus.data          147                       // number of overall (read+write) accesses.
+
+
+\newpage
+\section{Λόγια για CPU models του gem5 και Προσομοιώσεις προγράμματος σε C στον gem5}
+
+\begin{itemize}
+\item AtomicSimpleCPU \newline
+Ο ΑtomicSImpleCpu είναι μια εκδοχή SimpleCPU που παρέχει ο gem5 και χρησιμοποιεί atomic memory accesses.Σύμφωνα με το documentation του gem5 \textbf{atomic accesses} είναι  προσβάσεις στην μνήμη γρηγορότερες από τις λεπτομερείς (\textit{detailed accesses}) και χρησιμοποιούνται για fast forwarding και warming up caches. O AtomicSimpleCPU εκτελεί όλες τις λειτουργίες για μια εντολή σε κάθε CPU tick() όπως φαίνεται από το σχεδιάγραμμα λειτουργίας.
+\item TimingSimpleCPU\newline
+Ο TimingSimpleCPU είναι μια εκδοχή του SimpleCPU που παρέχει ο gem5 και χρησιμοποιεί timing memory accesses.Επειδή το μοντέλο αυτό δεν έχει μνήμη cache σταματάει(\textit{stall}) στα cache accesses και περιμένει απο την κύρια μνήμη να ανταποκριθεί πριν συνεχίσει την εκτέλεση εντολής.Είναι επίσης ένα fast-to-run μοντέλο,δεν υποστηρίζει pipelining ,οπότε εκτελεί μόνο μία εντολή κάθε στιγμή. Atomic και Timing memory accesses δεν μπορουν να συνυπάρχουν σε ενα σύστημα μνήμης.\footnote{Timing accesses are the most detailed access. They reflect our best effort for realistic timing and include the modeling of queuing delay and resource contention. Once a timing request is successfully sent at some point in the future the device that sent the request will either get the response or a NACK if the request could not be completed (more below). Timing and Atomic accesses can not coexist in the memory system.}
+\item MinorCPU\newline
+O Μinor είναι ένας in-order επεξεργαστής με τέσσερα επίπεδα pipeline και παραμετροποιήσιμες δομές δεδομένων και συμπεριφορά εκτέλεσης ώστε να μπορεί να εξομοιώνει όσο πιο κοντά γίνεται ενα πραγματικό επεξεργαστή. Τα 4 στάδια pipeline του minor είναι τα εξής:
+\begin{enumerate}
+\item Fetch1 :: Fetch1 is responsible for fetching cache lines or partial cache lines from the I-cache and passing them on to Fetch2  
+\item Fetch2 ::  decomposes cache lines into instructions
+\item Decode :: takes a vector of instructions from Fetch2 (via its input buffer) and decomposes those instructions into micro-ops (if necessary) and packs them into its output instruction vector
+\item Execute :: execution procedure 
+\end{enumerate}
+\item High-Performance In-order (HPI) CPU \newline
+Το μοντέλο αυτό είναι βασισμένο στην αρχιτεκτονική Arm και το ονομάζουμε HPI. To HPI CPU timing model ρυθμίζεται για να αντιπροσωπεύει μια μοντέρνα in-order Armv8-A εφαρμογή. Το pipeline του HPI CPU χρησιμοποιεί το ίδιο four-stage μοντέλο όπως ο MinorCPU που αναφέραμε προηγουμένως.
+\end{itemize}
+
+
+%Cache warming is designed to help reduce the execution times of the initial queries executed against a database. This is done by preloading the database server's cache with database pages that were referenced the last time the database was started. Warming the cache can improve performance when the same query or similar queries are executed against a database each time it is started. %
+%Fast forwarding is used to warm-up microarchitectural state (caches, branch predictors, etc.) in preparation for more accurate simulation of a particular section of interest within an application. Since microarchitectural state can depend on operation ordering (e.g., cache replacement for data accesses and interactions between threads), speculation (e.g., instruction caching behavior), and even timing (e.g., thermal behavior), this is not a perfectly accurate warm-up, but "all models are wrong".%
+
+\subsection{Προσομοίωση στον gem5 / Εκτέλεση προγράμματος σε C σε arm επξεργαστή}
+O κώδικας που γράψαμε σε c είναι ο εξής:\newline
+\begin{lstlisting}
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int main(){
+    double x = rand()%10;
+    if ( x > 5){
+        printf("Random number is greater than 5\n");
+    }else
+    {
+        printf("Random number is less than 5\n");
+    }
+    printf("\n");
+    printf("%f\n",x);
+    
+    return 0;
+}
+\end{lstlisting}
+
+\newline
+Επειδή το cpu\tu clock είναι στα 500ticks by default το οριζουμε σε όλες τις προσομοιώσεις στο 1000ticks. Οταν αλλάζουμε συχνότητα επεξεργαστή μας ενδιαφέρει το sys\tu clk.\newline
+\textbf{a)}\newline
+Για την πρώτη προσομοίωση τρέχουμε το εξής για minor:\newline
+\newline
+\begin{lstlisting}
+./build/ARM/gem5.opt -d ~/Desktop/MinorCPUdefault configs/example/se.py --cpu-type=MinorCPU  --caches -c ~/Desktop/gem5_test
+\end{lstlisting}\newline
+απο το stats.txt:\newline
+MinorCPU\newline
+Line 12:	sim\tu seconds	0.000050	// Number of seconds simulated\newline
+Αντίστοιχα για τον TimingSimpleCPU:
+\begin{lstlisting}
+./build/ARM/gem5.opt -d ~/Desktop/MinorCPUdefault configs/example/se.py --cpu-type=TimingSimpleCPU  --caches -c ~/Desktop/gem5_test
+\end{lstlisting}\newline
+TimingSimpleCPU\newline
+Line 12:	sim\tu seconds  0.000066	// Number of seconds simulated\newline
+\textbf{b)}\newline
+Από τις προσομοιώσεις ο MinorCPU είναι πιο γρήγορος από τον TimingSimpleCPU.Αυτό ήταν αναμενόμενο καθώς ο MinorCPU υποστηρίζει 4 επίπεδα pipeline και τεχνολογία  μνημών cache.Επίσης όσον αφορά τους κύκλους που χρειάστηκαν για την ολοκλήρωση του προγράμματος στον TimingSimpleCPU είναι 65607 σε αντίθεση με τους 50071 κύκλους του MinorCPU. Αυτή η διαδορά οφείλεται στο οτι ο TimingSimpleCPU κάνει απευθείας προσπέλαση\newline
+\textbf{c)}\newline
+\begin{enumerate}
+\item Προσομοίωση σε συχνότητα επεξέργαστή 500Mhz-> --sys-clock = 500000000, --cpu-clock=1000000000 \newline
+απο το stats.txt:\newline
+MinorCPU\newline
+Line 12:	sim\tu seconds	0.000057	// Number of seconds simulated\newline
+TimingSimpleCPU\newline
+Line 12:	sim\tu seconds  0.000073	// Number of seconds simulated\newline
+Σχόλια : "Βλέπουμε μια αύξηση του χρόνου εκτέλεσης που ειναι απολύτως λογικό καθώς υποδιπλασιάζουμε την συχνότητα του ρολογιού οπότε ο χρόνος κύκλου διπλασιάζεται."
+\item Προσομοίωση με αλλαγή τεχνολογίας μνήμης DDR4\tu 2400\tu 8x8 απο την default DDR3\tu 1600\tu 8x8 -> --mem-type=DDR4\tu 2400\tu 8x8.\newline
+απο το stats.txt:\newline
+MinorCPU\newline
+Line 12:	sim\tu seconds	0.000049	// Number of seconds simulated\newline
+TimingSimpleCPU\newline
+Line 12:	sim\tu seconds  0.000065	// Number of seconds simulated\newline
+Σχόλια :¨Παρατηρούμε μείωση του χρόνου εκτέλεσης γιατί τώρα έχουμε μνήμες με μεγαλύτερο bandwidth και καλύτερης τεχνολογίας Double Data Rate".
+\end{enumerate}
+
+
+\end{document}
