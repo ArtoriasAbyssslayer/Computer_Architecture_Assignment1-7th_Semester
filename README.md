@@ -1,5 +1,4 @@
 # Computer_Architecture_Assignment1-7th_Semester
-# Computer_Architecture_Assignment1-7th_Semester
 ## ΑΡΧΙΤΕΚΤΟΝΙΚΗ ΠΡΟΗΓΜΕΝΩΝ ΥΠΟΛΟΓΙΣΤΩΝ
 
 ### Αναφορά 1ου Εργαστηρίου 
