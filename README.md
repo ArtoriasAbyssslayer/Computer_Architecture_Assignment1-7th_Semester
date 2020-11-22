@@ -12,7 +12,7 @@
 * Ορίζεται το dictionary cpu_types που αντιστοιχίζει τον επεξεργαστή σε έναν από τους παρακάτω τύπους(δομή δεδομένων):<br/>
        1) AtomicSimpleCPU : "atomic" ->Η προεπιλογή τύπου επεξεργαστή που δεν έχει caches.<br/>
        2) MinorCPU : "minor" ->Στην περίπτωση αυτή χρησιμοποιείται η βιβλιοθήκη devices.py που ορίζονται οι δομικές μονάδες του minor (L1 caches(dcache,icache), L2 cache) με όλα           τα χαρακτηριστικά τους.<br/>
-       3) ΗP1 : "hpi" ->Κατά αντιστοιχία με το παραπάνω μέσω της βιβλιοθήκης  HPI.py ορίζονται οι απαραίτητες μνήμες cache για hpi επεξεργαστή ή cluster.
+       3) ΗPΙ : "hpi" ->Κατά αντιστοιχία με το παραπάνω μέσω της βιβλιοθήκης  HPI.py ορίζονται οι απαραίτητες μνήμες cache για hpi επεξεργαστή ή cluster.
        
 * Ορίζεται στην κλάση _SimpleSeSystem_  η συχνότητα του ρολογιού : 
 Clock speed: 1GHz στο πεδίο self.clk_domain = SrcClockDomain ( clock ="1GHz" , voltage_domain=self.voltage_domain )
