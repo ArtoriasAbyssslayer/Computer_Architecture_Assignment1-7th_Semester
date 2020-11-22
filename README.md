@@ -46,7 +46,7 @@ Commited intructions : 5028
 
 **2c)**
 
-- Το συνολικό πλήθος των προσβάσεων στην L2 cache είναι 479, από τα οποία 332 είναι από miss της icache και 147 από miss της dcache.
+- Το συνολικό πλήθος των προσβάσεων στην L2 cache είναι 479, από τις οποίες 332 είναι από miss της icache και 147 από miss της dcache.
 Αυτούσια παράθεση από το αρχείο stats.txt :<br/>
 system.cpu_cluster.l2.demand_accesses::total : 479 // number of demand (read+write) accesses<br/>
 system.cpu_cluster.l2.overall_accesses::.cpu_cluster.cpus.inst : 332 // number of overall (read+write) accesses<br/>
