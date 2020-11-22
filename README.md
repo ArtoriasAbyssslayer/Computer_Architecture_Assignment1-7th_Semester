@@ -32,11 +32,11 @@ Clock speed: 1GHz στο πεδίο self.clk_domain = SrcClockDomain ( clock ="1
 Ανοίγοντας το αρχείο config.ini παρατηρούμε τα εξής :
 * [system.clk_domain] -> clock = 1000 (επαληθεύεται)
 * [system.cpu_cluster.cpus.dcache] -> size = 32768 (που επαληθεύεται από το αρχείοdevices.py όπου η data cache L1 του minor είναι 32KB)
-* [system.cpu_cluster.cpus.icache] -> size = 49152 (που επαληθεύεται από το αρχείο devices.py όπου η instruction cache L1του minor είναι 48KB)
+* [system.cpu_cluster.cpus.icache] -> size = 49152 (που επαληθεύεται από το αρχείο devices.py όπου η instruction cache L1 του minor είναι 48KB)
 * [system.cpu_cluster.l2] -> size = 1048576 (που επαληθεύεται από το αρχείο devices.py όπου η cache L2 του minor είναι 1 ΜΒ)
 * [system.voltage_domain] voltage=3.3(που επαληθεύεται)
 * [system.cpu_cluster.voltage_domain] -> voltage = 1.2(που επαληθεύεται)
-* [system] -> _mem_ _ _ranges_ = 0 : 2147483648(που επαληθεύει τα2GB by default DRAM)
+* [system] -> _mem_ _ _ranges_ = 0 : 2147483648(που επαληθεύει τα 2GB by default DRAM)
 
 **2b)**
 
