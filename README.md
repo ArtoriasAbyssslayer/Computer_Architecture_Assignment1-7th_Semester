@@ -61,13 +61,13 @@ system.cpu_cluster.l2.overall_accesses::.cpu_cluster.cpus.data : 147 // number o
 
 - **TimingSimpleCPU :**
 
-Ο TimingSimpleCPUείναι μια εκδοχή του SimpleCPU που παρέχει ο gem5 και χρησιμοποιεί timing memory accesses. Επειδή, το μοντέλο αυτό δεν έχει μνήμη cache σταματάει (stall) στα cache accesses και περιμένει από την κύρια μνήμη να ανταποκριθεί για να συνεχίσει την εκτέλεση της εντολής. Είναι επίσης, ένα fast-to-run μοντέλο, δεν υποστηρίζει pipelining, οπότε εκτελεί μόνο μία εντολή κάθε στιγμή. Τέλος, Atomic και Timing memory accesses δεν μπορούν να συνυπάρχουν σε ένα σύστημα μνήμης.*
+Ο TimingSimpleCPU είναι μια εκδοχή του SimpleCPU που παρέχει ο gem5 και χρησιμοποιεί timing memory accesses. Επειδή, το μοντέλο αυτό δεν έχει μνήμη cache σταματάει (stall) στα cache accesses και περιμένει από την κύρια μνήμη να ανταποκριθεί για να συνεχίσει την εκτέλεση της εντολής. Είναι επίσης, ένα fast-to-run μοντέλο, δεν υποστηρίζει pipelining, οπότε εκτελεί μόνο μία εντολή κάθε στιγμή. Τέλος, Atomic και Timing memory accesses δεν μπορούν να συνυπάρχουν σε ένα σύστημα μνήμης.*
 
 (*) Timing accesses are the most detailed access. They reflect our best effort for realistic timing and include the modeling of queuing delay and resource contention. Once a timing request is successfully sent at some point in the future the device that sent the request will either get the response or a NACK if the request could not be completed (more below).
 
 - **MinorCPU :**
 
-O Μinorείναι ένας in-order επεξεργαστής με τέσσερα επίπεδα pipeline, με μοντελοποιήσιμες δομές δεδομένων και συμπεριφορά εκτέλεσης ώστε να μπορεί να εξομοιώνει όσο πιο κοντά γίνεται ένα πραγματικό επεξεργαστή. Τα 4 στάδια pipeline του minor είναι τα εξής (παράθεση στα αγγλικά, καθώς είναι δύσκολη η ταυτόσημη απόδοση τους στα ελληνικά) :
+O Μinor είναι ένας in-order επεξεργαστής με τέσσερα επίπεδα pipeline, με μοντελοποιήσιμες δομές δεδομένων και συμπεριφορά εκτέλεσης ώστε να μπορεί να εξομοιώνει όσο πιο κοντά γίνεται ένα πραγματικό επεξεργαστή. Τα 4 στάδια pipeline του minor είναι τα εξής (παράθεση στα αγγλικά, καθώς είναι δύσκολη η ταυτόσημη απόδοση τους στα ελληνικά) :
 
        1. Fetch1 :: Fetch1 is responsible for fetching cache lines or partial cache lines from the I-cache and passing them on to Fetch
        2. Fetch2 :: decomposes cache lines into instructions
