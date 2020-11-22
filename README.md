@@ -57,7 +57,7 @@ system.cpu_cluster.l2.overall_accesses::.cpu_cluster.cpus.data : 147 // number o
 
 - **ΑtomicSimpleCPU :**
 
-Ο ΑtomicSImple Cpu είναι μια εκδοχή SimpleCPU που παρέχει ο gem5 και χρησιμοποιεί atomic memory accesses. Σύμφωνα με το documentation του gem5 atomic accesses είναι  προσβάσεις στην μνήμη γρηγορότερες από τις λεπτομερείς (detailed accesses) και χρησιμοποιούνται για fast forwarding και warming up caches. O AtomicSimpleCPUεκτελεί όλες τις λειτουργίες για μια εντολή σε κάθε CPU tick(). 
+Ο ΑtomicSimple Cpu είναι μια εκδοχή SimpleCPU που παρέχει ο gem5 και χρησιμοποιεί atomic memory accesses. Σύμφωνα με το documentation του gem5 atomic accesses είναι  προσβάσεις στην μνήμη γρηγορότερες από τις λεπτομερείς (detailed accesses) και χρησιμοποιούνται για fast forwarding και warming up caches. O AtomicSimpleCPU εκτελεί όλες τις λειτουργίες για μια εντολή σε κάθε CPU tick(). 
 
 - **TimingSimpleCPU :**
 
