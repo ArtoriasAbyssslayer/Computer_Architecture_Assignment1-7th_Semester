@@ -82,7 +82,7 @@ O Μinor είναι ένας in-order επεξεργαστής με τέσσερ
 
 Το μοντέλο αυτό είναι βασισμένο στην αρχιτεκτονική Arm και το ονομάζουμε HPI. To HPI CPU timing model ρυθμίζεται για να αντιπροσωπεύει μια μοντέρνα in-order Armv8-A εφαρμογή. Το pipeline του HPI CPU χρησιμοποιεί το ίδιο four-stage μοντέλο όπως ο MinorCPU που αναφέραμε παραπάνω.
 
-Επειδή το cpu_clock είναι στα 500 ticks by default το ορίζουμε σε όλες τις προσομοιώσεις στα 1000 ticks. Όταν αλλάζουμε συχνότητα επεξεργαστή μας ενδιαφέρει το sys_clk (το ρολόι του συστήματος).
+ Όταν αλλάζουμε συχνότητα επεξεργαστή μας ενδιαφέρει το sys_clk (το ρολόι του συστήματος).
 
 **a)** Το πρόγραμμα σε c που υλοποιήσαμε παράγει έναν τυχαίο αριθμό και συγκρίνουμε αν αυτός είναι μεγαλύτερος ή μικρότερος του 5.
 
@@ -90,14 +90,14 @@ O Μinor είναι ένας in-order επεξεργαστής με τέσσερ
 **./ build /ARM/gem5. opt −d ~/Desktop/MinorCPUdefault configs /example/ se. py −−cpu−type=MinorCPU −−caches−c ~/Desktop/gem5_test**
 
 από το αρχείο stats.txt, που προκύπτει από την προσομοίωση βρίσκουμε :<br/>
-Line 12: sim_seconds : 0.000050 // Number of seconds simulated
+Line 12: sim_seconds : 0.000041 // Number of seconds simulated
 
 Αντίστοιχα για τονTimingSimpleCPU:
 
-**./ build /ARM/gem5. opt −d ~/Desktop/MinorCPUdefault configs/example/ se. py −−cpu−type=TimingSimpleCPU −−caches−c ~/Desktop/gem5_test**
+**./ build /ARM/gem5. opt −d ~/Desktop/TimingSimpleCPUdefault configs/example/ se. py −−cpu−type=TimingSimpleCPU −−caches−c ~/Desktop/gem5_test**
 
 από το αρχείο stats.txt, που προκύπτει από την προσομοίωση βρίσκουμε :<br/>
-Line 12: sim_seconds : 0.000066 // Number of seconds simulated
+Line 12: sim_seconds : 0.000048 // Number of seconds simulated
 
 **b)**
 
@@ -106,7 +106,6 @@ Line 12: sim_seconds : 0.000066 // Number of seconds simulated
 **c)**
 
  **1.Προσομοίωση σε συχνότητα επεξεργαστή 500MΗz**-> –sys-clock = 500000000,
-–cpu-clock=1000000000
 
 από το stats.txt:<br/>
 MinorCPU<br/>
