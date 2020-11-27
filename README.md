@@ -96,15 +96,16 @@ O Μinor είναι ένας in-order επεξεργαστής με τέσσερ
 **a)** Το πρόγραμμα σε c που υλοποιήσαμε παράγει έναν τυχαίο αριθμό και συγκρίνουμε αν αυτός είναι μεγαλύτερος ή μικρότερος του 5.
 
 Για την πρώτη προσομοίωση τρέχουμε το εξής για τον επεξεργαστή MinorCPU:
+```js
 **./ build /ARM/gem5. opt −d ~/Desktop/MinorCPUdefault configs /example/ se. py −−cpu−type=MinorCPU −−caches−c ~/Desktop/gem5_test**
-
+```
 από το αρχείο stats.txt, που προκύπτει από την προσομοίωση βρίσκουμε :<br/>
 Line 12: sim_seconds : 0.000041 // Number of seconds simulated
 
 Αντίστοιχα για τονTimingSimpleCPU:
-
+```js
 **./ build /ARM/gem5. opt −d ~/Desktop/TimingSimpleCPUdefault configs/example/ se. py −−cpu−type=TimingSimpleCPU −−caches−c ~/Desktop/gem5_test**
-
+```
 από το αρχείο stats.txt, που προκύπτει από την προσομοίωση βρίσκουμε :<br/>
 Line 12: sim_seconds : 0.000048 // Number of seconds simulated
 
