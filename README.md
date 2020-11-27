@@ -34,8 +34,8 @@ Clock speed: 1GHz στο πεδίο self.clk_domain = SrcClockDomain ( clock ="1
 * [system.cpu_cluster.cpus.dcache] -> size = 32768 (που επαληθεύεται από το αρχείο devices.py όπου η data cache L1 του minor είναι 32KB)
 * [system.cpu_cluster.cpus.icache] -> size = 49152 (που επαληθεύεται από το αρχείο devices.py όπου η instruction cache L1 του minor είναι 48KB)
 * [system.cpu_cluster.l2] -> size = 1048576 (που επαληθεύεται από το αρχείο devices.py όπου η cache L2 του minor είναι 1 ΜΒ)
-* [system.voltage_domain] voltage=3.3(που επαληθεύεται)
-* [system.cpu_cluster.voltage_domain] -> voltage = 1.2(που επαληθεύεται)
+* [system.voltage_domain] voltage=3.3(που επαληθεύεται) // χρησιμοποιείται από 0-5 γιατί πρόκειται για μικρουπολογιστές.
+* [system.cpu_cluster.voltage_domain] -> voltage = 1.2(που επαληθεύεται) //Διαμοιράζεται το voltage που παίρνει το chip στα επιμέρους cpus.
 * [system] -> _mem_ _ _ranges_ = 0 : 2147483648(που επαληθεύει τα 2GB by default DRAM)
 
 **2b)**
@@ -43,6 +43,8 @@ Clock speed: 1GHz στο πεδίο self.clk_domain = SrcClockDomain ( clock ="1
 Aνοίγοντας το αρχείο stats.txt κάνουμε τις παρακάτω παρατηρήσεις :<br/>
 - Στο line14: system.cpu_cluster.cpus.committedInsts 5028 // Number of instructions committed<br/>
 Commited intructions : 5028
+- Στο line15 : system.cpu_cluster.cpus.committedOps 5834 //Number of ops (including micro ops)<br/>
+Tο πρώτο αφορά τις εντολές του προγράμματος ενώ το δεύτερο προσθέτει σε αυτές και εντολές που διαμορφώνουν τον εξομοιωτή και τα δομικά του μέρη(πχ bootloader σε κινητά).
 
 **2c)**
 
@@ -51,6 +53,7 @@ Commited intructions : 5028
 system.cpu_cluster.l2.demand_accesses::total : 479 // number of demand (read+write) accesses<br/>
 system.cpu_cluster.l2.overall_accesses::.cpu_cluster.cpus.inst : 332 // number of overall (read+write) accesses<br/>
 system.cpu_cluster.l2.overall_accesses::.cpu_cluster.cpus.data : 147 // number of overall (read+write) accesses.<br/>
+
 
 **3)**
 Συνοπτική περιγραφή των in-order μοντέλων επεξεργαστών με πληροφορίες που αντλήσαμε από [το site του gem5](http://www.gem5.org/documentation/) :
