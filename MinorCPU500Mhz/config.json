@@ -40,7 +40,7 @@
                 "app_path": "/proc",
                 "eventq_index": 0,
                 "host_paths": [
-                    "/home/harry/Desktop/MinorCPU500Mhz/fs/proc"
+                    "/home/harry/Documents/Computer_Architecture_1st_Assignment/MinorCPU500Mhz/fs/proc"
                 ]
             },
             {
@@ -51,7 +51,7 @@
                 "app_path": "/sys",
                 "eventq_index": 0,
                 "host_paths": [
-                    "/home/harry/Desktop/MinorCPU500Mhz/fs/sys"
+                    "/home/harry/Documents/Computer_Architecture_1st_Assignment/MinorCPU500Mhz/fs/sys"
                 ]
             },
             {
@@ -62,7 +62,7 @@
                 "app_path": "/tmp",
                 "eventq_index": 0,
                 "host_paths": [
-                    "/home/harry/Desktop/MinorCPU500Mhz/fs/tmp"
+                    "/home/harry/Documents/Computer_Architecture_1st_Assignment/MinorCPU500Mhz/fs/tmp"
                 ]
             }
         ],
@@ -1176,7 +1176,7 @@
                         "name": "workload",
                         "path": "system.cpu.workload",
                         "cmd": [
-                            "/home/harry/Desktop/gem5_test"
+                            "/home/harry/Documents/Computer_Architecture_1st_Assignment/gem5_test"
                         ],
                         "cwd": "/home/harry/my_gem5",
                         "drivers": [],
@@ -1185,7 +1185,7 @@
                         "errout": "cerr",
                         "euid": 100,
                         "eventq_index": 0,
-                        "executable": "/home/harry/Desktop/gem5_test",
+                        "executable": "/home/harry/Documents/Computer_Architecture_1st_Assignment/gem5_test",
                         "gid": 100,
                         "input": "cin",
                         "kvmInSE": false,
@@ -1425,7 +1425,7 @@
             "name": "cpu_clk_domain",
             "path": "system.cpu_clk_domain",
             "clock": [
-                1000
+                500
             ],
             "domain_id": -1,
             "eventq_index": 0,

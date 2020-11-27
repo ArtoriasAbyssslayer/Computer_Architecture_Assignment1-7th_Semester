@@ -40,7 +40,7 @@
                 "app_path": "/proc",
                 "eventq_index": 0,
                 "host_paths": [
-                    "/home/harry/Documents/Computer_Architecture_1st_Assignment/TimingSimpleCPU500Mhz/fs/proc"
+                    "/home/harry/Documents/Computer_Architecture_1st_Assignment/TimingSimpleCPUdefault/fs/proc"
                 ]
             },
             {
@@ -51,7 +51,7 @@
                 "app_path": "/sys",
                 "eventq_index": 0,
                 "host_paths": [
-                    "/home/harry/Documents/Computer_Architecture_1st_Assignment/TimingSimpleCPU500Mhz/fs/sys"
+                    "/home/harry/Documents/Computer_Architecture_1st_Assignment/TimingSimpleCPUdefault/fs/sys"
                 ]
             },
             {
@@ -62,7 +62,7 @@
                 "app_path": "/tmp",
                 "eventq_index": 0,
                 "host_paths": [
-                    "/home/harry/Documents/Computer_Architecture_1st_Assignment/TimingSimpleCPU500Mhz/fs/tmp"
+                    "/home/harry/Documents/Computer_Architecture_1st_Assignment/TimingSimpleCPUdefault/fs/tmp"
                 ]
             }
         ],
@@ -84,7 +84,7 @@
             "name": "clk_domain",
             "path": "system.clk_domain",
             "clock": [
-                2000
+                1000
             ],
             "domain_id": -1,
             "eventq_index": 0,

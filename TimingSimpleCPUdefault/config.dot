@@ -446,7 +446,7 @@ fontsize=14;
 label="clk_domain \n: SrcClockDomain";
 shape=Mrecord;
 style="rounded, filled";
-tooltip="clock&#61;2000&#10;\domain_id&#61;-1&#10;\eventq_index&#61;0&#10;\init_perf_level&#61;0&#10;\voltage_domain&#61;system.voltage_domain";
+tooltip="clock&#61;1000&#10;\domain_id&#61;-1&#10;\eventq_index&#61;0&#10;\init_perf_level&#61;0&#10;\voltage_domain&#61;system.voltage_domain";
 }
 
 subgraph cluster_system_cpu_voltage_domain {
@@ -569,7 +569,7 @@ fontsize=14;
 label="redirect_paths0 \n: RedirectPath";
 shape=Mrecord;
 style="rounded, filled";
-tooltip="app_path&#61;/proc&#10;\eventq_index&#61;0&#10;\host_paths&#61;/home/harry/Documents/Computer_Architecture_1st_Assignment/TimingSimpleCPU500Mhz/fs/proc";
+tooltip="app_path&#61;/proc&#10;\eventq_index&#61;0&#10;\host_paths&#61;/home/harry/Documents/Computer_Architecture_1st_Assignment/TimingSimpleCPUdefault/fs/proc";
 }
 
 subgraph cluster_system_redirect_paths1 {
@@ -581,7 +581,7 @@ fontsize=14;
 label="redirect_paths1 \n: RedirectPath";
 shape=Mrecord;
 style="rounded, filled";
-tooltip="app_path&#61;/sys&#10;\eventq_index&#61;0&#10;\host_paths&#61;/home/harry/Documents/Computer_Architecture_1st_Assignment/TimingSimpleCPU500Mhz/fs/sys";
+tooltip="app_path&#61;/sys&#10;\eventq_index&#61;0&#10;\host_paths&#61;/home/harry/Documents/Computer_Architecture_1st_Assignment/TimingSimpleCPUdefault/fs/sys";
 }
 
 subgraph cluster_system_redirect_paths2 {
@@ -593,7 +593,7 @@ fontsize=14;
 label="redirect_paths2 \n: RedirectPath";
 shape=Mrecord;
 style="rounded, filled";
-tooltip="app_path&#61;/tmp&#10;\eventq_index&#61;0&#10;\host_paths&#61;/home/harry/Documents/Computer_Architecture_1st_Assignment/TimingSimpleCPU500Mhz/fs/tmp";
+tooltip="app_path&#61;/tmp&#10;\eventq_index&#61;0&#10;\host_paths&#61;/home/harry/Documents/Computer_Architecture_1st_Assignment/TimingSimpleCPUdefault/fs/tmp";
 }
 
 }
