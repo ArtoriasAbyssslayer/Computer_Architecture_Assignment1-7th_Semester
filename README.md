@@ -54,15 +54,15 @@ system.cpu_cluster.l2.demand_accesses::total : 479 // number of demand (read+wri
 system.cpu_cluster.l2.overall_accesses::.cpu_cluster.cpus.inst : 332 // number of overall (read+write) accesses<br/>
 system.cpu_cluster.l2.overall_accesses::.cpu_cluster.cpus.data : 147 // number of overall (read+write) accesses.<br/>
 Γενικά ισχύει:
-$L2_accesses = Miss_rate_l1cache x Total_l1_accesses$
-Στο δικό μας παράδειγμα:
-$L2_accesses = Miss_rate_icache * total_icache_accesses + Miss_rate_dcache * total_dcache_accesses$
-Για τιμές από το αρχείο [stats.txt](https://github.com/harryfilis/Computer_Architecture_Assignment1-7th_Semester/blob/master/hello_result/stats.txt):
-Miss_rate_icache = 12%
-Miss_rate_dcache = 8.2%
-total_dcache_accesses = 2160
-total_icache_accesses = 2764
-οπότε τα L2 acceses ~= 479
+**L2_accesses = Miss_rate_l1cache x Total_l1_accesses**<br/>
+Στο δικό μας παράδειγμα:<br/>
+**L2_accesses = Miss_rate_icache * total_icache_accesses + Miss_rate_dcache * total_dcache_accesses**<br/>
+Για τιμές από το αρχείο [stats.txt](https://github.com/harryfilis/Computer_Architecture_Assignment1-7th_Semester/blob/master/hello_result/stats.txt):<br/>
+Miss_rate_icache = 12%<br/>
+Miss_rate_dcache = 8.2%<br/>
+total_dcache_accesses = 2160<br/>
+total_icache_accesses = 2764<br/>
+οπότε τα L2 acceses ~= 479<br/>
 
 **3)**
 Συνοπτική περιγραφή των in-order μοντέλων επεξεργαστών με πληροφορίες που αντλήσαμε από [το site του gem5](http://www.gem5.org/documentation/) :
