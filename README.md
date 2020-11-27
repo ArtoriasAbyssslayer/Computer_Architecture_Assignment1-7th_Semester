@@ -101,28 +101,28 @@ Line 12: sim_seconds : 0.000048 // Number of seconds simulated
 
 **b)**
 
-Από τις προσομοιώσεις ο MinorCPU είναι πιο γρήγορος από τονTimingSimpleCPU. Αυτό ήταν αναμενόμενο καθώς ο MinorCPU υποστηρίζει 4 επίπεδα pipeline και τεχνολογία μνημών cache. Επίσης, όσον αφορά τους κύκλους που χρειάστηκαν για την ολοκλήρωση του προγράμματος στον TimingSimpleCPU είναι 65607 σε αντίθεση με τους 50071 κύκλους του MinorCPU. Διαφορά που οφείλεται στο ότι ο TimingSimpleCPU κάνει απευθείας προσπέλαση στην κύρια μνήμη που χρειάζεται περισσότερους κύκλους.
+Από τις προσομοιώσεις ο MinorCPU είναι πιο γρήγορος από τονTimingSimpleCPU. Αυτό ήταν αναμενόμενο καθώς ο MinorCPU υποστηρίζει 4 επίπεδα pipeline και τεχνολογία μνημών cache. Επίσης, όσον αφορά τους κύκλους που χρειάστηκαν για την ολοκλήρωση του προγράμματος στον TimingSimpleCPU είναι 96486 σε αντίθεση με τους 82664 κύκλους του MinorCPU. Διαφορά που οφείλεται στο ότι ο TimingSimpleCPU κάνει απευθείας προσπέλαση στην κύρια μνήμη που χρειάζεται περισσότερους κύκλους.
 
 **c)**
 
- **1.Προσομοίωση σε συχνότητα επεξεργαστή 500MΗz**-> –sys-clock = 500000000,
+ **1.Προσομοίωση σε συχνότητα επεξεργαστή 500MΗz**-> Πρόσθεση σαν option στην εντολή : **-–sys-clock = 500000000**,
 
 από το stats.txt:<br/>
 MinorCPU<br/>
-Line 12: sim_seconds : 0.000057 // Number of seconds simulated<br/>
+Line 12: sim_seconds : 0.000049 // Number of seconds simulated<br/>
 TimingSimpleCPU<br/>
-Line 12: sim_seconds : 0.000073 // Number of seconds simulated<br/>
+Line 12: sim_seconds : 0.000055  // Number of seconds simulated<br/>
 
 Βλέπουμε μια αύξηση του χρόνου εκτέλεσης που είναι απολύτως λογική, καθώς υποδιπλασιάζουμε την συχνότητα του ρολογιού οπότε ο χρόνος
 κύκλου διπλασιάζεται.
 
-**2.Προσομοίωση με αλλαγή τεχνολογίας μνήμης σε DDR4_2400_8x8** από την default DDR3_1600_8x8 -> --mem-type=DDR4_2400_8x8.
+**2.Προσομοίωση με αλλαγή τεχνολογίας μνήμης σε DDR4_2400_8x8** από την default DDR3_1600_8x8 -> Πρόσθεση σαν option στην εντολή :**--mem-type=DDR4_2400_8x8**.
 
 από το stats.txt:<br/>
 ο χρόνος στην περίπτωση του MinorCPU :<br/>
-Line 12: sim_seconds : 0.000049 // Number of seconds simulated<br/>
+Line 12: sim_seconds : 0.000040 // Number of seconds simulated<br/>
 ο χρόνος στην περίπτωση του TimingSimpleCPU :<br/>
-Line 12: sim_seconds : 0.000065 // Number of seconds simulated<br/>
+Line 12: sim_seconds : 0.000048 // Number of seconds simulated<br/>
 
 Παρατηρούμε μείωση του χρόνου εκτέλεσης γιατί τώρα στο σύστημα που εξομοιώνουμε, έχουμε μνήμες με μεγαλύτερο bandwidth και καλύτερης τεχνολογίας Double Data Rate.
 
